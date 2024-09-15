@@ -1,11 +1,19 @@
 const express = require('express');
+const userRoutes = require('./routes/userRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
+const productRoutes = require('./routes/productRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
+
+// Initializations
 const app = express();
-const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+// Middleware para parsear JSON
+app.use(express.json());
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+// Routes
+app.use('/api/users', userRoutes);
+app.use('/api/reviews', reviewRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/categories', categoryRoutes);
+
+module.exports = app; 
