@@ -83,36 +83,36 @@ La base de datos utilizada es MongoDB. El esquema básico incluye las siguientes
 
 ## Schemas de la base de datos
 
-- **products**:
-   id: { type: Number, required: true, unique: true }
-   name: { type: String, required: true }
-   image: { type: String }
-   array_images: { type: [String] }
-   description: { type: String }
-   price: { type: Number, required: true }
-   diet_type: { type: String, enum: ['celiac', 'carnivore', 'vegetarian', 'vegan', 'no_diet_type'], default: 'no_diet_type' }
-   category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }
+### products:
+   - id: { type: Number, required: true, unique: true }
+   - name: { type: String, required: true }
+   - image: { type: String }
+   - array_images: { type: [String] }
+   - description: { type: String }
+   - price: { type: Number, required: true }
+   - diet_type: { type: String, enum: ['celiac', 'carnivore', 'vegetarian', 'vegan', 'no_diet_type'], default: 'no_diet_type' }
+   - category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }
 
-- **users**:
-   name: { type: String, required: true }
-   email: { type: String, required: true, unique: true }
-   password: { type: String, required: true }
-   notification: { type: Boolean, default: false }
-   daily_notification: { type: Boolean, default: false }
-   review_quality: { type: Number, default: 0 }
-   user_type: { type: String, enum: ['client', 'admin', 'owner'], required: true }
-   image: { type: String, default: 'no image' }
+### users:
+   - name: { type: String, required: true }
+   - email: { type: String, required: true, unique: true }
+   - password: { type: String, required: true }
+   - notification: { type: Boolean, default: false }
+   - daily_notification: { type: Boolean, default: false }
+   - review_quality: { type: Number, default: 0 }
+   - user_type: { type: String, enum: ['client', 'admin', 'owner'], required: true }
+   - image: { type: String, default: 'no image' }
 
-- **categories**:
-   id: { type: Number, required: true, unique: true }
-   name: { type: String, required: true }
+### categories:
+   - id: { type: Number, required: true, unique: true }
+   - name: { type: String, required: true }
 
-- **reviews**:
-   id: { type: Number, required: true, unique: true }
-   product_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true }
-   user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
-   comment: { type: String, required: true }
-   qualification: { type: Number, required: true }
+### reviews:
+   - id: { type: Number, required: true, unique: true }
+   - product_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true }
+   - user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+   - comment: { type: String, required: true }
+   - qualification: { type: Number, required: true }
 
 ## Postman
 
