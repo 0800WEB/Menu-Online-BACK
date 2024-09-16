@@ -118,7 +118,7 @@ La base de datos utilizada es MongoDB. El esquema básico incluye las siguientes
 
 Puedes encontrar la colección de Postman para probar las APIs en el siguiente enlace: 
 ```plaintext
-https://app.getpostman.com/join-team?invite_code=a5ad94a81f84eab917e18154349adbbf&target_code=29104a9597059dd984395bfac8a71d85
+https://www.postman.com/tobiasguerreroteam/workspace/menu-online-back
 ```
 
 ## Licencia
