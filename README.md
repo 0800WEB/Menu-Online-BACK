@@ -25,13 +25,7 @@ Este proyecto es el backend para un sistema de menú online. Permite gestionar p
    ```
 
 3. Configura las variables de entorno:
-   Crea un archivo `.env` en la raíz del proyecto y agrega las siguientes variables:
-   ```plaintext
-   PORT=4000
-
-   MENU_ONLINE_MONGODB_HOST=127.0.0.1
-   MENU_ONLINE_MONGODB_DATABASE=menu_online
-   ```
+- **Pedir las variables de entorno al administrador de la organizacion**
 
 ## Ejecución
 

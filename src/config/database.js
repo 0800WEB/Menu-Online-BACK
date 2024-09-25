@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
-const { MENU_ONLINE_MONGODB_HOST, MENU_ONLINE_MONGODB_DATABASE } = process.env;
-const MONGODB_URI = `mongodb://${MENU_ONLINE_MONGODB_HOST}/${MENU_ONLINE_MONGODB_DATABASE}`;
-
+const { MONGODB_USERNAME, MONGODB_PASSWORD, MONGODB_DATABASE, MONGODB_COLLECTION } = process.env;
+const MONGODB_URI = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_DATABASE}.mongodb.net/${MONGODB_COLLECTION}?retryWrites=true&w=majority`;
 async function connectDB() {
   try {
     await mongoose.connect(MONGODB_URI);
