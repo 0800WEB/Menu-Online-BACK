@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const ProductSchema = new mongoose.Schema({
     id: { type: Number, required: true, unique: true },
@@ -11,4 +11,4 @@ const ProductSchema = new mongoose.Schema({
     category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+export default mongoose.model('Product', ProductSchema);

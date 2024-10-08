@@ -1,7 +1,7 @@
-const Category = require('../models/Category');
+import Category from '../models/Category.js';
 
 // Obtener todas las categorías
-exports.getCategories = async (req, res) => {
+export const getCategories = async (req, res) => {
   try {
     const categories = await Category.find();
     res.json(categories);
@@ -11,7 +11,7 @@ exports.getCategories = async (req, res) => {
 };
 
 // Crear una nueva categoría
-exports.createCategory = async (req, res) => {
+export const createCategory = async (req, res) => {
   const { id, name } = req.body;
 
   const newCategory = new Category({ id, name });
@@ -24,55 +24,55 @@ exports.createCategory = async (req, res) => {
   }
 };
 
-// Obtener una categoria por ID
-exports.getCategoryById = async (req, res) => {
+// Obtener una categoría por ID
+export const getCategoryById = async (req, res) => {
   try {
-      const { id } = req.params;
-      const category = await Category.findById(id);
+    const { id } = req.params;
+    const category = await Category.findById(id);
 
-      if (!category) {
-          return res.status(404).json({ message: 'Categoria no encontrada' });
-      }
+    if (!category) {
+      return res.status(404).json({ message: 'Categoría no encontrada' });
+    }
 
-      res.status(200).json(category);
+    res.status(200).json(category);
   } catch (error) {
-      res.status(500).json({ message: 'Error al obtener el categoria', error });
+    res.status(500).json({ message: 'Error al obtener la categoría', error });
   }
 };
 
 // Editar una categoría
-exports.updateCategory = async (req, res) => {
+export const updateCategory = async (req, res) => {
   try {
-      const { id } = req.params;
-      const updatedData = req.body;
+    const { id } = req.params;
+    const updatedData = req.body;
 
-      // Actualizar la categoría con los datos proporcionados
-      const updatedCategory = await Category.findByIdAndUpdate(id, updatedData, { new: true, runValidators: true });
+    // Actualizar la categoría con los datos proporcionados
+    const updatedCategory = await Category.findByIdAndUpdate(id, updatedData, { new: true, runValidators: true });
 
-      if (!updatedCategory) {
-          return res.status(404).json({ message: 'Categoría no encontrada' });
-      }
+    if (!updatedCategory) {
+      return res.status(404).json({ message: 'Categoría no encontrada' });
+    }
 
-      res.status(200).json(updatedCategory);
+    res.status(200).json(updatedCategory);
   } catch (error) {
-      res.status(500).json({ message: 'Error al actualizar la categoría', error });
+    res.status(500).json({ message: 'Error al actualizar la categoría', error });
   }
 };
 
 // Eliminar una categoría
-exports.deleteCategory = async (req, res) => {
+export const deleteCategory = async (req, res) => {
   try {
-      const { id } = req.params;
+    const { id } = req.params;
 
-      // Eliminar la categoría por su ID
-      const deletedCategory = await Category.findByIdAndDelete(id);
+    // Eliminar la categoría por su ID
+    const deletedCategory = await Category.findByIdAndDelete(id);
 
-      if (!deletedCategory) {
-          return res.status(404).json({ message: 'Categoría no encontrada' });
-      }
+    if (!deletedCategory) {
+      return res.status(404).json({ message: 'Categoría no encontrada' });
+    }
 
-      res.status(200).json({ message: 'Categoría eliminada correctamente' });
+    res.status(200).json({ message: 'Categoría eliminada correctamente' });
   } catch (error) {
-      res.status(500).json({ message: 'Error al eliminar la categoría', error });
+    res.status(500).json({ message: 'Error al eliminar la categoría', error });
   }
 };

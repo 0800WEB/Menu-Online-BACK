@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const { MONGODB_USERNAME, MONGODB_PASSWORD, MONGODB_DATABASE, MONGODB_COLLECTION } = process.env;
 const MONGODB_URI = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_DATABASE}.mongodb.net/${MONGODB_COLLECTION}?retryWrites=true&w=majority`;
@@ -12,4 +12,4 @@ async function connectDB() {
   }
 }
 
-module.exports = connectDB;
+export default connectDB;

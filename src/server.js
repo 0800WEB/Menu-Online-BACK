@@ -1,5 +1,5 @@
-const connectDB = require('./config/database');
-const app = require('./index');
+import connectDB from './config/database.js';
+import app from './index.js';
 const port = process.env.PORT || 3000;
 
 async function startServer() {

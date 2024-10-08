@@ -1,7 +1,7 @@
-const Review = require('../models/Review');
+import Review from '../models/Review.js';
 
 // Obtener todas las reseñas
-exports.getReviews = async (req, res) => {
+export const getReviews = async (req, res) => {
   try {
     const reviews = await Review.find().populate('product_id user_id');
     res.json(reviews);
@@ -11,7 +11,7 @@ exports.getReviews = async (req, res) => {
 };
 
 // Crear una nueva reseña
-exports.createReview = async (req, res) => {
+export const createReview = async (req, res) => {
   const { id, product_id, user_id, comment, qualification } = req.body;
 
   const newReview = new Review({ id, product_id, user_id, comment, qualification });
@@ -25,53 +25,53 @@ exports.createReview = async (req, res) => {
 };
 
 // Obtener una reseña por ID
-exports.getReviewById = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const review = await Review.findById(id);
+export const getReviewById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const review = await Review.findById(id);
 
-        if (!review) {
-            return res.status(404).json({ message: 'Review no encontrada' });
-        }
-
-        res.status(200).json(review);
-    } catch (error) {
-        res.status(500).json({ message: 'Error al obtener la review', error });
+    if (!review) {
+      return res.status(404).json({ message: 'Review no encontrada' });
     }
+
+    res.status(200).json(review);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener la review', error });
+  }
 };
 
 // Editar una reseña
-exports.updateReview = async (req, res) => {
+export const updateReview = async (req, res) => {
   try {
-      const { id } = req.params;
-      const updatedData = req.body;
+    const { id } = req.params;
+    const updatedData = req.body;
 
-      const updatedReview = await Review.findByIdAndUpdate(id, updatedData, { new: true, runValidators: true });
+    const updatedReview = await Review.findByIdAndUpdate(id, updatedData, { new: true, runValidators: true });
 
-      if (!updatedReview) {
-          return res.status(404).json({ message: 'Review no encontrada' });
-      }
+    if (!updatedReview) {
+      return res.status(404).json({ message: 'Review no encontrada' });
+    }
 
-      res.status(200).json(updatedReview);
+    res.status(200).json(updatedReview);
   } catch (error) {
-      res.status(500).json({ message: 'Error al actualizar la review', error });
+    res.status(500).json({ message: 'Error al actualizar la review', error });
   }
 };
 
 // Eliminar una reseña
-exports.deleteReview = async (req, res) => {
+export const deleteReview = async (req, res) => {
   try {
-      const { id } = req.params;
+    const { id } = req.params;
 
-      // Eliminar la review por su ID
-      const deletedReview = await Review.findByIdAndDelete(id);
+    // Eliminar la review por su ID
+    const deletedReview = await Review.findByIdAndDelete(id);
 
-      if (!deletedReview) {
-          return res.status(404).json({ message: 'Review no encontrada' });
-      }
+    if (!deletedReview) {
+      return res.status(404).json({ message: 'Review no encontrada' });
+    }
 
-      res.status(200).json({ message: 'Review eliminada correctamente' });
+    res.status(200).json({ message: 'Review eliminada correctamente' });
   } catch (error) {
-      res.status(500).json({ message: 'Error al eliminar la review', error });
+    res.status(500).json({ message: 'Error al eliminar la review', error });
   }
 };

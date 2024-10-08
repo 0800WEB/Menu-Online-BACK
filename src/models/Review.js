@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const ReviewSchema = new mongoose.Schema({
     id: { type: Number, required: true, unique: true },
@@ -8,4 +8,4 @@ const ReviewSchema = new mongoose.Schema({
     qualification: { type: Number, required: true },
 });
 
-module.exports = mongoose.model('Review', ReviewSchema);
+export default mongoose.model('Review', ReviewSchema);

@@ -1,5 +1,5 @@
-const express = require('express');
-const { getReviews, createReview, getReviewById, updateReview, deleteReview } = require('../controllers/reviewController');
+import express from 'express';
+import { getReviews, createReview, getReviewById, updateReview, deleteReview } from '../controllers/reviewController.js' ;
 
 const router = express.Router();
 
@@ -9,4 +9,4 @@ router.get('/:id', getReviewById);
 router.put('/:id', updateReview);
 router.delete('/:id', deleteReview);
 
-module.exports = router;
+export default router;
